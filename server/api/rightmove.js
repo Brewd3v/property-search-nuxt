@@ -1,8 +1,12 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
 
 export default defineEventHandler(async (event) => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath,
+    headless: true,
+  });
   const page = await browser.newPage();
 
   await page.goto("https://www.rightmove.co.uk/");
