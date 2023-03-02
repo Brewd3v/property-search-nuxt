@@ -5,7 +5,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.4.1",
@@ -15,5 +16,8 @@
     "chrome-aws-lambda": "^10.1.0",
     "puppeteer": "^19.7.2",
     "vue3-carousel": "^0.2.11"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
