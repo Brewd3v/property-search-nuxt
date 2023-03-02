@@ -25,11 +25,11 @@ export default defineEventHandler(async (event) => {
 
   await page.select("aria/Max Price", "2500");
 
-  await page.select("aria/Min Beds", "1");
+  await page.select("aria/Min Beds", "2");
 
-  const textSelector = await page.waitForSelector(".searchHeader-resultCount");
+  // const textSelector = await page.waitForSelector(".searchHeader-resultCount");
 
-  const results = await textSelector.evaluate((el) => el.textContent);
+  // const results = await textSelector.evaluate((el) => el.textContent);
 
   await new Promise((r) => setTimeout(r, 4000));
 
@@ -72,5 +72,5 @@ export default defineEventHandler(async (event) => {
   );
 
   await browser.close();
-  return { results, items };
+  return items;
 });

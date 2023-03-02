@@ -3,6 +3,16 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
   tailwindcss: {},
   nitro: {
-    preset: "node-server",
+    routeRules: {
+      "/api/pedder": {
+        swr: true,
+      },
+      "/api/dexters": {
+        swr: true,
+      },
+      "/api/rightmove": {
+        swr: true,
+      },
+    },
   },
 });
