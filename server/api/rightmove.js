@@ -4,7 +4,8 @@ import chromium from "chrome-aws-lambda";
 export default defineEventHandler(async (event) => {
   const browser = await puppeteer.launch({
     args: chromium.args,
-    executablePath: await chromium.executablePath,
+    executablePath:
+      process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath),
     headless: true,
   });
   const page = await browser.newPage();
@@ -13,6 +14,10 @@ export default defineEventHandler(async (event) => {
 
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
+
+  await new Promise((r) => setTimeout(r, 500));
+
+  await page.waitForSelector("input.ksc_inputText.ksc_typeAheadInputField");
 
   // // Type into search box
   await page.type("input.ksc_inputText.ksc_typeAheadInputField", "SE23");
@@ -30,10 +35,6 @@ export default defineEventHandler(async (event) => {
   await page.select("aria/Max Price", "2500");
 
   await page.select("aria/Min Beds", "2");
-
-  // const textSelector = await page.waitForSelector(".searchHeader-resultCount");
-
-  // const results = await textSelector.evaluate((el) => el.textContent);
 
   await new Promise((r) => setTimeout(r, 4000));
 

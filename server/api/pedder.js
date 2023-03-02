@@ -4,7 +4,8 @@ import chromium from "chrome-aws-lambda";
 export default defineEventHandler(async (event) => {
   const browser = await puppeteer.launch({
     args: chromium.args,
-    executablePath: await chromium.executablePath,
+    executablePath:
+      process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath),
     headless: true,
   });
   const page = await browser.newPage();
@@ -56,10 +57,3 @@ export default defineEventHandler(async (event) => {
   await browser.close();
   return items;
 });
-
-//   await page.select(".streetarea", "Forest Hill");
-//   await page.select(".minbedrooms", "1");
-//   await page.select(".maxprice", "2400");
-
-//   page.$eval(".sort-toggle", (el) => el.click());
-//   await page.$eval("text/Newest First", (el) => el.click());

@@ -4,7 +4,8 @@ import chromium from "chrome-aws-lambda";
 export default defineEventHandler(async (event) => {
   const browser = await puppeteer.launch({
     args: chromium.args,
-    executablePath: await chromium.executablePath,
+    executablePath:
+      process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath),
     headless: true,
   });
   const page = await browser.newPage();
