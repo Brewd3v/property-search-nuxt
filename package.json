@@ -14,8 +14,8 @@
     "nuxt": "^3.2.2"
   },
   "dependencies": {
-    "netlify-plugin-cache": "^1.0.3",
-    "puppeteer": "^19.7.2",
+    "chrome-aws-lambda": "^10.1.0",
+    "puppeteer-core": "^19.7.2",
     "vue3-carousel": "^0.2.11"
   },
   "engines": {
