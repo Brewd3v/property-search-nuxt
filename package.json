@@ -1,5 +1,5 @@
 {
-  "type":"module",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -14,7 +14,6 @@
     "nuxt": "^3.2.2"
   },
   "dependencies": {
-    "puppeteer": "^19.7.2",
     "vue3-carousel": "^0.2.11"
   },
   "engines": {
