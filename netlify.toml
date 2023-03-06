@@ -1,2 +1,2 @@
 [[plugins]]
-package = "./netlify/plugins/keep-data-cache"
+package = "/netlifyPlugins/keep-data-cache/index.cjs"
