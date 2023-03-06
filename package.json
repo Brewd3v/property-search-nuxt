@@ -20,6 +20,7 @@
     "vue3-carousel": "^0.2.11"
   },
   "engines": {
-    "node": "16.x"
+    "node": "14.x"
   }
 }
+
