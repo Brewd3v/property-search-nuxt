@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     headless: chromium.headless,
     ignoreHTTPSErrors: true,
   });
-  
+
   const page = await browser.newPage();
 
   await page.goto(
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
 
-  await new Promise((r) => setTimeout(r, 2000));
+  await new Promise((r) => setTimeout(r, 1000));
 
   const rawItems = await page.$$("li.result.item.to-let.infinite-item");
 

@@ -19,11 +19,11 @@ export default defineEventHandler(async (event) => {
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
 
-  await new Promise((r) => setTimeout(r, 2000));
+  await new Promise((r) => setTimeout(r, 1000));
 
   await page.$eval(".includingSold", (el) => el.click());
 
-  await new Promise((r) => setTimeout(r, 3000));
+  await new Promise((r) => setTimeout(r, 2000));
 
   const rawItems = await page.$$(".property");
 

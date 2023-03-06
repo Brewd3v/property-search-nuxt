@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
 
-  await new Promise((r) => setTimeout(r, 1000));
+  await new Promise((r) => setTimeout(r, 500));
 
   await page.waitForSelector("input.ksc_inputText.ksc_typeAheadInputField");
 
@@ -32,13 +32,13 @@ export default defineEventHandler(async (event) => {
 
   await searchProperties.click();
 
-  await new Promise((r) => setTimeout(r, 3500));
+  await new Promise((r) => setTimeout(r, 2500));
 
   await page.select("aria/Max Price", "2500");
 
   await page.select("aria/Min Beds", "2");
 
-  await new Promise((r) => setTimeout(r, 4000));
+  await new Promise((r) => setTimeout(r, 2500));
 
   const rawItems = await page.$$(".l-searchResult");
 
