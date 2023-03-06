@@ -1,8 +1,13 @@
 import chromium from "chrome-aws-lambda";
+import puppeteer from "puppeteer-core";
 
 export default defineEventHandler(async (event) => {
-  const browser = await chromium.puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  const browser = await puppeteer.launch({
+    args: chromium.args,
+    // get path to browser
+    executablePath:
+      process.env.EXCECUTABLE_PATH || (await chromium.executablePath),
+    headless: true,
   });
   const page = await browser.newPage();
 
@@ -11,7 +16,7 @@ export default defineEventHandler(async (event) => {
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
 
-  await new Promise((r) => setTimeout(r, 500));
+  await new Promise((r) => setTimeout(r, 1000));
 
   await page.waitForSelector("input.ksc_inputText.ksc_typeAheadInputField");
 
