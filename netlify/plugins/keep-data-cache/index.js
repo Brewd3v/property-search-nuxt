@@ -1,7 +1,9 @@
-export const onPreBuild = async function ({ utils }) {
-  await utils.cache.restore("/opt/buildhome/.cache/puppeteer/");
-};
+module.exports = {
+  async onPreBuild({ utils }) {
+    await utils.cache.restore("/opt/buildhome/.cache/puppeteer/");
+  },
 
-export const onPostBuild = async function ({ utils }) {
-  await utils.cache.save("/opt/buildhome/.cache/puppeteer/");
+  async onPostBuild({ utils }) {
+    await utils.cache.save("/opt/buildhome/.cache/puppeteer/");
+  },
 };
